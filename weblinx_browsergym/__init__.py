@@ -18,7 +18,7 @@ from browsergym.core.action.highlevel import HighLevelActionSet
 from browsergym.core.chat import Chat
 from browsergym.core.env import BrowserEnv
 from browsergym.core.task import AbstractBrowserTask
-from huggingface_hub import snapshot_download
+from huggingface_hub import snapshot_download, hf_hub_download
 from PIL import Image
 from weblinx.processing.intent import Intent
 
@@ -319,11 +319,11 @@ def download_metadata(
         )
         return str(metadata_path)
 
-    snapshot_download(
+    hf_hub_download(
         repo_id=repo_id,
         repo_type="dataset",
+        filename="metadata.json",
         local_dir=str(cache_dir),
-        allow_patterns=["metadata.json"],
     )
 
     return str(metadata_path)
