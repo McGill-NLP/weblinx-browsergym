@@ -6,3 +6,5 @@ playwright
 browsergym>=0.8.1
 gymnasium
 pytest-cov
+setuptools
+twine
