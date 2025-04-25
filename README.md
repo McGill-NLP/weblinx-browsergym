@@ -36,7 +36,7 @@ tasks = weblinx_browsergym.list_tasks(split=split, metadata_path="./metadata.jso
 env = weblinx_browsergym.make(f"browsergym/{tasks[100]}")
 obs, info = env.reset()
 action = 'click(bid="baf79046-bd85-4867")'
-obs, reward, done, info = env.step(action)
+obs, reward, done, _, info = env.step(action)
 
 assert done is True, "Episode should end after one step"
 assert 0 <= reward <= 1, "Reward should be between 0 and 1"

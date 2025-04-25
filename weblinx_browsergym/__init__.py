@@ -682,12 +682,13 @@ def download_and_unzip_demos(
         f"Downloading {num_to_download} zips to {base_zip_dir}, skipping {num_not_to_download} demos."
     )
 
-    snapshot_download(
-        repo_id=repo_id,
-        repo_type="dataset",
-        local_dir=cache_dir,
-        allow_patterns=download_patterns,
-    )
+    for pattern in download_patterns:
+        hf_hub_download(
+            repo_id=repo_id,
+            repo_type="dataset",
+            local_dir=cache_dir,
+            filename=pattern,
+        )
 
     logger.debug(f"Downloaded {num_to_download} zips to {base_zip_dir}")
 
