@@ -29,11 +29,12 @@ pip install -e .
 Then, you can run the following code to test the environment:
 
 ```python
+import gymnasium as gym
 import weblinx_browsergym
 
 # pattern: weblinx.<demo_id>.<step>
 tasks = weblinx_browsergym.list_tasks(split=split, metadata_path="./metadata.json")
-env = weblinx_browsergym.make(f"browsergym/{tasks[100]}")
+env = gym.make(f"browsergym/{tasks[100]}")
 obs, info = env.reset()
 action = 'click(bid="baf79046-bd85-4867")'
 obs, reward, done, _, info = env.step(action)
